@@ -1,0 +1,12 @@
+.bundle
+db/*.sqlite3
+db/schema.rb
+log/*.log
+tmp
+config/database.yml
+
+# OS X only
+.DS_Store
+**/.DS_Store
+*~
+vendor/gems

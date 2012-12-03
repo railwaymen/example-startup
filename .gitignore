@@ -10,3 +10,4 @@ config/database.yml
 **/.DS_Store
 *~
 vendor/gems
+config/env_config.rb

@@ -1,8 +1,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :facebook, ENV['AUTH_FB_APP_IN'], ENV['AUTH_FB_APP_SECRET']
-  config.omniauth :google_oauth2, ENV['AUTH_GOOGLE_APP_IN'], ENV['AUTH_GOOGLE_APP_SECRET'], { access_type: "offline", approval_prompt: "" }
+  config.omniauth :facebook, ENV['AUTH_FB_APP_ID'], ENV['AUTH_FB_APP_SECRET']
+  config.omniauth :google_oauth2, ENV['AUTH_GOOGLE_APP_ID'], ENV['AUTH_GOOGLE_APP_SECRET'], { access_type: "offline", approval_prompt: "" }
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

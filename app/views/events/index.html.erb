@@ -20,8 +20,8 @@
     <td><%= event.end_time %></td>
     <td><%= event.location %></td>
     <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) if event.owner == current_user %></td>
+    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } if event.owner == current_user %></td>    
   </tr>
 <% end %>
 </table>

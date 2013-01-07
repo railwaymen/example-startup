@@ -25,6 +25,8 @@
   <%= @event.location %>
 </p>
 
+<% if @event.owner == current_user -%>
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+<% end -%>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

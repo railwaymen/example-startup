@@ -31,6 +31,23 @@
     <%= f.label :location %><br />
     <%= f.text_field :location %>
   </div>
+
+  <% if current_user.social_graph.present? && (f.object.new_record? || f.object.on_facebook?) -%>
+    <div>
+      <h4>Invite Friends</h4>
+      <ul>
+	<% current_user.social_graph.friends.each do |friend| -%>
+	  <li>
+	    <%= check_box_tag 'event[facebook_attenders_ids][]', friend.identifier -%>
+	    <%= image_tag "http://graph.facebook.com/#{friend.identifier}/picture" -%>
+	    <%= friend.name -%>
+	  </li>
+	<% end -%>
+      </ul>
+    </div>
+  <% end -%>
+
+  
   <div class="actions">
     <%= f.submit %>
   </div>

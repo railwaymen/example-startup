@@ -25,6 +25,30 @@
   <%= @event.location %>
 </p>
 
+<% if @event.on_facebook? -%>
+  <h4>Invited Friends:</h4>
+  <ul>
+    <% @event.fetch_from_facebook.invited.each do |friend| -%>
+      <li>
+	<%= image_tag "http://graph.facebook.com/#{friend.identifier}/picture" -%>
+	<%= friend.name -%>
+      </li>
+    <% end -%>
+  </ul>
+
+  <h4>Attending:</h4>
+  <ul>
+    <% @event.fetch_from_facebook.attending.each do |friend| -%>
+      <li>
+	<%= image_tag "http://graph.facebook.com/#{friend.identifier}/picture" -%>
+	<%= friend.name -%>
+      </li>
+    <% end -%>
+  </ul>
+  
+<% end -%>
+
+
 <% if @event.owner == current_user -%>
   <%= link_to 'Edit', edit_event_path(@event) %> |
 <% end -%>

@@ -1,7 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :owner, :class_name => "User"
 
-  attr_accessible :description, :end_time, :location, :name, :start_time
+  attr_accessible :facebook_attenders_ids, :description, :end_time, :location, :name, :start_time
+  attr_accessor :facebook_attenders_ids
 
   validates_presence_of :name, :start_time, :end_time
   validate :start_and_end_time
@@ -27,6 +28,7 @@ class Event < ActiveRecord::Base
   def post_to_facebook
     if owner.social_graph.present?
       event = owner.social_graph.event!(attr_for_facebook)
+      event.invite!(:users => facebook_attenders_ids) if facebook_attenders_ids.present?
       update_attribute(:facebook_id, event.identifier)
     end
   end
@@ -34,7 +36,11 @@ class Event < ActiveRecord::Base
   def update_on_facebook
     if on_facebook?
       event = fetch_from_facebook
-      event.update(attr_for_facebook) if event.present?
+      if event.present?
+        invited_ids = event.invited.map(&:identifier) 
+        event.invite!(:users => facebook_attenders_ids.reject{|attender_id| invited_ids.include?(attender_id)}) if facebook_attenders_ids.present?
+        event.update(attr_for_facebook) 
+      end
     end
   end
 

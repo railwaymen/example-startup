@@ -1,5 +1,10 @@
 class AdsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :edit, :update, :delete]
+  before_filter :authenticate_user!, :only => [:new, :edit, :update, :delete, :my]
+
+  def my
+    @ads = current_user.adminable_ads
+    render :index
+  end
 
   # GET /ads
   # GET /ads.json

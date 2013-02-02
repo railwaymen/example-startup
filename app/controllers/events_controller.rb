@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :edit, :update, :delete]
+  before_filter :authenticate_user!, :only => [:new, :edit, :update, :delete, :my]
 
+
+  def my
+    @events = current_user.adminable_events
+    render :index
+  end
 
   # GET /events
   # GET /events.json

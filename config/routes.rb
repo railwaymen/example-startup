@@ -1,8 +1,16 @@
 ExampleStartup::Application.routes.draw do
-  resources :ads
+  resources :ads do
+    collection do
+      get 'my'
+    end
+  end
 
 
-  resources :events
+  resources :events do
+    collection do
+      get 'my'
+    end
+  end
 
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

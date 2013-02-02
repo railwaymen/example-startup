@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
 
   has_many :adminable_events, :class_name => 'Event', :foreign_key => :owner_id
+  has_many :adminable_ads, :class_name => 'Ad', :foreign_key => :owner_id
 
   def social_graph
     if provider == "facebook" && access_token.present?

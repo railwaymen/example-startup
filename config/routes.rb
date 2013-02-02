@@ -1,4 +1,7 @@
 ExampleStartup::Application.routes.draw do
+  resources :ads
+
+
   resources :events
 
 

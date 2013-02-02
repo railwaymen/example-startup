@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @ad.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @ad.description %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @ad.contact %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @ad.location %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @ad.owner.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<%= link_to 'Back', ads_path %>

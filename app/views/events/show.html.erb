@@ -25,7 +25,13 @@
   <%= @event.location %>
 </p>
 
-<% if @event.on_facebook? -%>
+<p>
+  <b>Owner:</b>
+  <%= @event.owner.name %>
+</p>
+
+
+<% if @event.fetch_from_facebook.present? -%>
   <h4>Invited Friends:</h4>
   <ul>
     <% @event.fetch_from_facebook.invited.each do |friend| -%>

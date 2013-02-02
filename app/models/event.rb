@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   end
 
   def fetch_from_facebook
-    owner.social_graph.events.detect{|event| event.identifier == facebook_id} if on_facebook?
+    FbGraph::Event.new(facebook_id, :access_token => self.owner.access_token) if on_facebook?
   end
 
   private

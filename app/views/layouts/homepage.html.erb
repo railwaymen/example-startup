@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render :partial => '/layouts/common_head' -%>
+    <%= stylesheet_link_tag "homepage", :media => "all" %>
+  </head>
+  <body screen_capture_injected="true">
+
+
+    <%= render :partial => '/layouts/common_nav' -%>
+
+    <%= render :partial => '/layouts/homepage_carousel' -%>
+
+    <%= render :partial => '/layouts/homepage_marketing' -%>
+    
+    <%= javascript_include_tag "application" %>
+    
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+  </body>
+</html>
